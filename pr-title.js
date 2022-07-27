@@ -74,7 +74,6 @@ async function titleCheckFailed(CHECKS, LABEL, MESSAGES) {
     }
 
     await addLabel(LABEL.name);
-    await addComment("Please provide ticket number of jira issue in the end of title.");
 
     if (CHECKS.alwaysPassCI) {
       core.info(MESSAGES.failure);
