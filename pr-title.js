@@ -74,18 +74,9 @@ async function titleCheckFailed(CHECKS, LABEL, MESSAGES) {
     }
 
     await addLabel(LABEL.name);
-
-    if (CHECKS.alwaysPassCI) {
-      core.info(MESSAGES.failure);
-    } else {
-      core.setFailed(MESSAGES.failure);
-    }
+    core.setFailed(MESSAGES.failure);
+    
   } catch (error) {
-    core.info(error);
-    if (CHECKS.alwaysPassCI) {
-      core.info(`Failed to add label (${LABEL.name}) to PR`);
-    } else {
-      core.setFailed(`Failed to add label (${LABEL.name}) to PR`);
-    }
+    core.setFailed(`Failed to add label (${LABEL.name}) to PR`);
   }
 }
